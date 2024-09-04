@@ -1,0 +1,229 @@
+/* Estilos generales */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    text-align: center;
+}
+
+.header,
+.menu,
+.hero,
+.main,
+.banner,
+.image-extra {
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.header {
+    background-color: #1a1a2e;
+}
+
+.menu {
+    background-color: #e94560;
+}
+
+.hero {
+    background-color: #0f4c75;
+}
+
+.main {
+    background-color: #16213e;
+}
+
+.banner {
+    background-color: #ffcc29;
+}
+
+.extra {
+    background-color: #0c796e;
+}
+
+.img {
+    background-color: #00adb5;
+}
+
+/* Diseño para móviles */
+@media (max-width: 599px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header"
+            "main"
+            "banner"
+            "image-extra";
+    }
+
+    .hero {
+        background-color: #0f4c75;
+        height: 60px;
+    }
+
+    .main {
+        background-color: #16213e;
+        height: 60px;
+    }
+
+    .banner {
+        background-color: #ffcc29;
+        height: 40px; /* Ajusta el tamaño del banner */
+    }
+
+    .image-extra {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        /* Asegura que el contenedor ocupe suficiente espacio para sus elementos hijos */
+        height: 150px; /* Ajusta esta altura según sea necesario */
+    }
+
+    .image-extra>.img,
+    .image-extra>.extra {
+        flex: 1;
+        /* Ajusta la altura específica */
+        height: 50%; /* Ajusta esto para que ambos elementos ocupen la mitad del contenedor */
+        text-align: center; /
+    }
+
+    .image-extra>.img {
+        background-color: #00adb5;
+        order: 2; /* Cambia el orden para que aparezca segundo */
+    }
+
+    .image-extra>.extra {
+        background-color: #0c796e;
+        order: 1; /* Cambia el orden para que aparezca primero */
+    }
+}
+
+
+/* Diseño para tablets */
+@media (min-width: 600px) and (max-width: 1023px) {
+    .container {
+        grid-template-columns: 0.5fr 2fr;
+        /* 2 columnas del mismo tamaño */
+        grid-template-rows: auto;
+        /* obtiene el tamaño restante */
+        grid-template-areas:
+            "header header"
+            "hero hero"
+            "menu main"
+            "menu banner"
+            "menu image";
+    }
+
+    .header {
+        grid-area: header;
+    }
+
+    .hero {
+        grid-area: hero;
+        height: 300px;
+    }
+
+    .main {
+        grid-area: main;
+        height: 100px;
+    }
+
+    .menu {
+        grid-area: menu;
+    }
+
+    .banner {
+        grid-area: banner;
+    }
+
+    .image-extra {
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        min-height: 100px;
+        /* Ajusta la altura mínima según sea necesario */
+        grid-template-areas:
+            "img extra";
+    }
+
+    .image-extra>.img,
+    .image-extra>.extra {
+        height: 100%;
+        /* Asegúrate de que estos elementos llenen el contenedor */
+    }
+
+    .image-extra>.img {
+        background-color: #00adb5;
+        /* Color de fondo para la imagen */
+        grid-area: extra;
+    }
+
+    .image-extra>.extra {
+        background-color: #0c796e;
+        /* Color de fondo para extra */
+        grid-area: img;
+    }
+}
+
+/* Diseño para desktop */
+@media (min-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        /* 3 columnas */
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header menu menu"
+            "hero hero hero"
+            "main . image"
+            "extra extra extra"
+            "banner banner banner";
+    }
+
+    .header {
+        grid-area: header;
+    }
+
+    .menu {
+        grid-area: menu;
+    }
+
+    .hero {
+        grid-area: hero;
+        height: 300px;
+    }
+
+    .main {
+        grid-area: main;
+        height: 100px;
+    }
+
+    .banner {
+        grid-area: banner;
+    }
+
+    /* Subdivisión de la columna image en dos filas: image y extra */
+    .image-extra {
+        grid-area: image;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        /* Dividimos la columna image en dos filas */
+        padding: 0;
+    }
+
+    .image-extra>.img {
+        background-color: #00adb5;
+        /* Color de fondo para la imagen */
+    }
+
+    .image-extra>.extra {
+        background-color: #0c796e;
+        /* Color de fondo para extra */
+    }
+}
